@@ -16,6 +16,7 @@
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":0,},
     {"id":{"name":"collision_line_find_nearest_point","path":"scripts/collision_line_find_nearest_point/collision_line_find_nearest_point.yy",},"order":5,},
     {"id":{"name":"math_scripts","path":"scripts/math_scripts/math_scripts.yy",},"order":8,},
+    {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},"order":2,},
     {"id":{"name":"draw_text_functions","path":"scripts/draw_text_functions/draw_text_functions.yy",},"order":0,},
     {"id":{"name":"obj_bullet_generator","path":"objects/obj_bullet_generator/obj_bullet_generator.yy",},"order":0,},
     {"id":{"name":"generator_spr","path":"sprites/generator_spr/generator_spr.yy",},"order":2,},

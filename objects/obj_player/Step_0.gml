@@ -1,5 +1,8 @@
-/// @description Movement Code
-
+/// @description State Machine
+switch(player_state)
+{
+	case(playerStates.IDLE):
+	
 		#region Movement Code
 		//controls
 		var move_up		= inputs.up();
@@ -14,6 +17,9 @@
 		var _dir = point_direction(0,0,h_input,v_input);
 		var hspd = h_input!=0 ? lengthdir_x(stats.spd,_dir) : 0;
 		var vspd = v_input!=0 ? lengthdir_y(stats.spd,_dir) : 0;
+		
+		//animates sprite
+		
 		
 		#region Collision Code
 		//horizontal collision
@@ -33,4 +39,6 @@
 		#endregion
 		
 		#endregion
-
+		
+	break;
+}

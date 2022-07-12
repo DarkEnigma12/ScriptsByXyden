@@ -8,6 +8,16 @@ stats =
 	def : 1,
 	spd : 4
 }
+enum playerStates
+{
+	
+	IDLE,
+	MOVING,
+	DYING
+	
+}
+player_state = playerStates.IDLE;
+player_sprites = []; //follows states
 
 #region Player inputs
 
@@ -20,7 +30,8 @@ inputs =
 						right	: ord("D"),
 						left	: ord("A"),
 						up		: ord("W"),
-						down	: ord("S")
+						down	: ord("S"),
+						shoot	: vk_space
 					},
 	
 	//actions
