@@ -1,4 +1,4 @@
-//Game Macros
+#region Game Macros
 
 //Meta Data Macros//
 #macro GAMEVERSION			GM_version
@@ -33,7 +33,7 @@
 #macro AlwaysActive			[PLAYER]
 
 //Debug Grid Vars
-#macro GRID_CELL_SIZE			32
+#macro GRID_CELL_SIZE		32
 //Menus Vars
 #macro MenusOutlineWidth	5
 #macro MenusBodyColor		c_black
@@ -44,8 +44,15 @@
 #macro FadeColor			c_black
 #macro FadeDecay			0.05
 
+#endregion
 
-//Globals
+#region Enums
+
+
+
+#endregion
+
+#region Globals
 ///@description Sets all globals
 gml_pragma("global","global_init()");
 
@@ -67,3 +74,4 @@ function global_init()
 	//game vars
 	global.test = 1;
 }
+#endregion
