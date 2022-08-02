@@ -25,6 +25,7 @@
     {"id":{"name":"gui_placement","path":"scripts/gui_placement/gui_placement.yy",},"order":6,},
     {"id":{"name":"instance_scale","path":"scripts/instance_scale/instance_scale.yy",},"order":7,},
     {"id":{"name":"obj_game_clock","path":"objects/obj_game_clock/obj_game_clock.yy",},"order":2,},
+    {"id":{"name":"obj_room_controller","path":"objects/obj_room_controller/obj_room_controller.yy",},"order":1,},
     {"id":{"name":"rm_debug","path":"rooms/rm_debug/rm_debug.yy",},"order":0,},
   ],
   "Options": [
