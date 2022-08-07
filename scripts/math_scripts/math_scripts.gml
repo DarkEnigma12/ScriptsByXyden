@@ -1,9 +1,9 @@
-///@func roundto_nearest_x(number, nearest integer,round method)
+///@func roundto_nearest(number, nearest integer,round method)
 ///@param {real} number
 ///@param {real} nearest_integer
 ///@param {string} rounding_method
 enum rounding_method {ROUND_UP,ROUND,ROUND_DOWN}
-function roundto_nearest_x(num,roundto,rnd=rounding_method.ROUND) 
+function roundto_nearest(num,roundto,rnd=rounding_method.ROUND) 
 {
 	
 	var result;

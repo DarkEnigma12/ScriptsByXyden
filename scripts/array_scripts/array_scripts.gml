@@ -3,7 +3,7 @@
 
 function array_sort_ext(arr,sort="ABC") {
 
-	if (!is_array(arr)) {show_debug_message("function array_sort_ext() - argument is NOt an array."); return arr;}
+	if (!is_array(arr)) {show_debug_message("function array_sort_ext() - argument is not an array."); return arr;}
 
 	sort = string_upper(sort);
 	var arr_len = array_length(arr);
@@ -93,4 +93,16 @@ function array_find_value(arr,val) {
 	
 	return check;
 	
+}
+
+///@description returns a copy of a 1-d array
+///@function array_create_copy()
+///@param array
+function array_create_copy(arr)
+{
+	if(!is_array(arr)) {show_debug_message(string("function array_create_copy() - argument is not an array")); return false;}
+	
+	var _arr_copy = [];
+	array_copy(_arr_copy,0,arr,0,array_length(arr));
+	return _arr_copy;
 }
