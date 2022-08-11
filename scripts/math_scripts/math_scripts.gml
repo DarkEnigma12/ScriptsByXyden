@@ -20,7 +20,7 @@ function roundto_nearest(num,roundto,rnd=rounding_method.ROUND)
 
 }
 
-///@description	Converts a bollean into a direction (either 1 or -1)
+///@description	Converts a boolean into a direction (either 1 or -1)
 ///@param {real} boolean
 function bool_to_vector(_bool)
 {
@@ -83,4 +83,21 @@ function choose_id(itm_pool) {
 	
 	return itm;
 	
+}
+
+/// @func   is_power(value, base)
+///
+/// @desc   Returns true if a given value is a power of the a given base,
+///         or false if it is not (or if it cannot be determined).
+///
+/// @param  {real}      value       number
+/// @param  {real}      base        exponential base
+///
+/// @return {bool}      true if a power of base
+ 
+function is_power(value, base)
+{
+    if (base <= 1) return false;
+	var _test = logn(10, 1000); //this throws a false when it shouldn't; float point math error
+    return ((logn(base, value) mod 1) == 0);
 }

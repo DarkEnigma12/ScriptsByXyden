@@ -1,3 +1,5 @@
 /// @description Code
 
-binary_count_set_bits(-4);
+var _test = is_power(1000,10);
+
+exit;
