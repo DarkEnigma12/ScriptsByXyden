@@ -5,6 +5,7 @@
     {"id":{"name":"music_scripts","path":"scripts/music_scripts/music_scripts.yy",},"order":0,},
     {"id":{"name":"spr_blackbox_whiteborder","path":"sprites/spr_blackbox_whiteborder/spr_blackbox_whiteborder.yy",},"order":0,},
     {"id":{"name":"par_bullet","path":"objects/par_bullet/par_bullet.yy",},"order":1,},
+    {"id":{"name":"Dialogue_Enum","path":"scripts/Dialogue_Enum/Dialogue_Enum.yy",},"order":1,},
     {"id":{"name":"font_and_string_measure","path":"scripts/font_and_string_measure/font_and_string_measure.yy",},"order":1,},
     {"id":{"name":"camera_manager_scripts","path":"scripts/camera_manager_scripts/camera_manager_scripts.yy",},"order":1,},
     {"id":{"name":"test_bullet_spr","path":"sprites/test_bullet_spr/test_bullet_spr.yy",},"order":3,},
