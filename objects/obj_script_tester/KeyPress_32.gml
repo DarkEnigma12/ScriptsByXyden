@@ -3,6 +3,7 @@
 
 if(!instance_exists(dialogue_manager))
 {
-	instance_create_layer(0,0,layer,dialogue_manager);
+	dialogue_box_create(dia_test1);
 }
 
+exit;

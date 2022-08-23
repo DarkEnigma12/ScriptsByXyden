@@ -26,6 +26,7 @@
     {"id":{"name":"dialogue_manager","path":"objects/dialogue_manager/dialogue_manager.yy",},"order":0,},
     {"id":{"name":"binary_math_scripts","path":"scripts/binary_math_scripts/binary_math_scripts.yy",},"order":11,},
     {"id":{"name":"pixel_clean_up","path":"scripts/pixel_clean_up/pixel_clean_up.yy",},"order":3,},
+    {"id":{"name":"dialogue_box","path":"scripts/dialogue_box/dialogue_box.yy",},"order":1,},
     {"id":{"name":"invisible_wall_spr","path":"sprites/invisible_wall_spr/invisible_wall_spr.yy",},"order":0,},
     {"id":{"name":"gui_placement","path":"scripts/gui_placement/gui_placement.yy",},"order":6,},
     {"id":{"name":"text_effects_parser","path":"scripts/text_effects_parser/text_effects_parser.yy",},"order":0,},
