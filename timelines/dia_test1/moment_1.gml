@@ -1,5 +1,5 @@
 var _text =
 
-"Fancy, isn't it?"
+"|BLUE|Fancy.|RED| Isn't|| it?"
 
 dialogue_text = textfx_parser(_text);

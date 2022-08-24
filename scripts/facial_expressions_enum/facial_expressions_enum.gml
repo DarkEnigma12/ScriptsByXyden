@@ -25,3 +25,10 @@ enum facialExpressions
 	TOTAL		
 	
 }
+
+//Portait subimages for open and closed mouth
+enum portaitMouth
+{
+	CLOSED,
+	OPENED
+}

@@ -32,17 +32,8 @@ function textfx_parser(_text)
 		switch(_cur_char)
 		{
 			case("|"):
-				_fxreader_active = YES;
-				_txtfx = "";
-			break;
-			
-			case(" "):
-				if(_fxreader_active) 
-				{
-					_fxreader_active = NO;
-					if(_txtfx == "") {array_push(_parsed_text,[_cur_char,_txtfx]);}
-				}
-				else {array_push(_parsed_text,[_cur_char,_txtfx]);}
+				if(_fxreader_active) {_fxreader_active = NO;}
+				else {_fxreader_active = YES; _txtfx = "";}
 			break;
 			
 			default:

@@ -4,9 +4,10 @@
 /// @param font
 /// @param talk_speed
 /// @param expression_array
+/// @param starting_emotion
 /// @param voice_sound
 /// @param text_box_sprite
-function dialogue_box_create(_dia,_fnt=-1,_tlkspd=talkSpeed.NORM,_expr=noone,_v=noone,_txtbx_spr=spr_blackbox_whiteborder)
+function dialogue_box_create(_dia,_fnt=-1,_tlkspd=talkSpeed.NORM,_expr=noone,_emot=noone,_v=snd_text_box,_txtbx_spr=spr_blackbox_whiteborder)
 {
 	with(instance_create_layer(0,0,layer,dialogue_manager))
 	{
@@ -20,7 +21,7 @@ function dialogue_box_create(_dia,_fnt=-1,_tlkspd=talkSpeed.NORM,_expr=noone,_v=
 			speaker_id : other.id,
 			dialogue : _dia,
 			expressions : _expr,
-			current_emotion :  noone,
+			current_emotion :  _emot,
 			voice : _v,
 			font : _fnt,
 			talkspeed : _tlkspd,
