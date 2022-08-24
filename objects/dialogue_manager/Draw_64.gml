@@ -151,28 +151,32 @@ while(i < min(type_count,_dia_len)) //min prevents i from calling an index outsi
 	var _yy = _dia_y+_char_h*_line_spacing;
 	
 	//color setter
-	switch(string_letters(_txtfx_code))
+	if(string_copy(_txtfx_code,1,3) == "HEX") {text_color = hex_to_dec(string_delete(_txtfx_code,1,4));}
+	else
 	{
-		//white, gray, black
-		case("WHITE"): case(""): text_color = c_white; break;
-		case("BLACK"): text_color = c_black; break;
-		case("GRAY"): case("GREY"): text_color = c_gray; break;
+		switch(string_letters(_txtfx_code))
+		{
+			//white, gray, black
+			case("WHITE"): case(""):	text_color = c_white; break;
+			case("BLACK"):				text_color = c_black; break;
+			case("GRAY"): case("GREY"): text_color = c_gray; break;
 		
-		//basic colors
-		case("RED"): text_color = c_red; break;
-		case("ORANGE"): text_color = c_orange; break;
-		case("YELLOW"): text_color = c_yellow; break;
-		case("GREEN"): text_color = c_green; break;
-		case("BLUE"): text_color = c_blue; break;
-		case("PURPLE"): text_color = c_purple; break;
+			//basic colors
+			case("RED"):				text_color = c_red; break;
+			case("ORANGE"):				text_color = c_orange; break;
+			case("YELLOW"):				text_color = c_yellow; break;
+			case("GREEN"):				text_color = c_green; break;
+			case("BLUE"):				text_color = c_blue; break;
+			case("PURPLE"):				text_color = c_purple; break;
 		
-		//make color
-		case("RGB"): 
-			var _r = real(string_copy(_txtfx_code,5,3));
-			var _g = real(string_copy(_txtfx_code,9,3));
-			var _b = real(string_copy(_txtfx_code,13,3));
-			text_color = make_color_rgb(_r,_g,_b);
-		break;
+			//make color
+			case("RGB"): //format: |RGB(000,000,000)|
+				var _r = real(string_copy(_txtfx_code,5,3));
+				var _g = real(string_copy(_txtfx_code,9,3));
+				var _b = real(string_copy(_txtfx_code,13,3));
+				text_color = make_color_rgb(_r,_g,_b);
+			break;
+		}
 	}
 	
 	//positional effects

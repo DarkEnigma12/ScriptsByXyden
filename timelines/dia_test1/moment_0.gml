@@ -1,6 +1,6 @@
 var _text =
 
-"Hello,this is a test for the new dialogue system!?! "+
+"Hello,|HEX 03BAFC| this|| is a test for the new dialogue system!?! "+
 "Now I have to |YELLOW|ramble to test the subpages system. "+
 "How droll|BLUE|#.#.#.||\n"+
 "But amusing."
