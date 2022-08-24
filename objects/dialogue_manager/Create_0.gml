@@ -13,7 +13,11 @@ page_break_position = 0;
 page_break_new_position = 0;
 confirm_button = vk_enter;
 show_asterisk = YES;
-text_color = c_white;
+prompt =
+{
+	question : noone,
+	responses : []
+}
 
 //typewriter vars
 type_count = 0;

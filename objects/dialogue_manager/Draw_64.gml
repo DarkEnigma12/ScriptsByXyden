@@ -120,10 +120,15 @@ var _char,_char_w = 0,_char_h = 0;
 var _fnt_h = string_height("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), _line_gap = 5;
 var _line_spacing = _fnt_h+_line_gap;
 var i = page_break_position;
-while(i < min(type_count,_dia_len)) //min prevents i from calling an index outside the dialogue array
+var time_offset = 0;
+var wave_level = 0;
+while(i < min(type_count,_dia_len))
 {
 	//increments i
 	++i;
+	
+	//calculates time offset for sine wave function
+	time_offset += wave_level;
 	
 	//grabs character info
 	_char = dialogue_text[i][text.CHARACTER];
@@ -147,42 +152,36 @@ while(i < min(type_count,_dia_len)) //min prevents i from calling an index outsi
 	#region TEXT EFFECTS SYSTEM
 	//vars
 	var _txtfx_code = dialogue_text[i][text.EFFECT];
+	var _txt_col	= dialogue_text[i][text.COLOR];
 	var _xx = _dia_x+_char_w;
 	var _yy = _dia_y+_char_h*_line_spacing;
 	
-	//color setter
-	if(string_copy(_txtfx_code,1,3) == "HEX") {text_color = hex_to_dec(string_delete(_txtfx_code,1,4));}
-	else
-	{
-		switch(string_letters(_txtfx_code))
-		{
-			//white, gray, black
-			case("WHITE"): case(""):	text_color = c_white; break;
-			case("BLACK"):				text_color = c_black; break;
-			case("GRAY"): case("GREY"): text_color = c_gray; break;
-		
-			//basic colors
-			case("RED"):				text_color = c_red; break;
-			case("ORANGE"):				text_color = c_orange; break;
-			case("YELLOW"):				text_color = c_yellow; break;
-			case("GREEN"):				text_color = c_green; break;
-			case("BLUE"):				text_color = c_blue; break;
-			case("PURPLE"):				text_color = c_purple; break;
-		
-			//make color
-			case("RGB"): //format: |RGB(000,000,000)|
-				var _r = real(string_copy(_txtfx_code,5,3));
-				var _g = real(string_copy(_txtfx_code,9,3));
-				var _b = real(string_copy(_txtfx_code,13,3));
-				text_color = make_color_rgb(_r,_g,_b);
-			break;
-		}
-	}
-	
-	//positional effects
+	//draws text with effect
 	switch(string_letters(_txtfx_code))
 	{
-		default: draw_text_color(_xx,_yy,_char,text_color,text_color,text_color,text_color,1);
+		case("JITTER"):
+			var _fx_factor = ((string_digits(_txtfx_code) == 0)||(string_digits(_txtfx_code) == "")) ? 0.25 : string_digits(_txtfx_code);
+			draw_text_color(_xx+random_range(-_fx_factor,_fx_factor),_yy+random_range(-_fx_factor,_fx_factor),_char,_txt_col,_txt_col,_txt_col,_txt_col,1);
+		break;
+		
+		case("TWITCH"):
+			var _fx_factor = ((string_digits(_txtfx_code) == 0)||(string_digits(_txtfx_code) == "")) ? 1 : string_digits(_txtfx_code);
+			var _fx_chance = (irandom_range(1,power(10,_fx_factor))==1);
+			draw_text_color(_xx+random_range(-_fx_chance,_fx_chance),_yy+random_range(-_fx_chance,_fx_chance),_char,_txt_col,_txt_col,_txt_col,_txt_col,1);
+		break;
+		
+		case("WAVE"):
+			wave_level = clamp(((string_digits(_txtfx_code) == "")) ? 0 : string_digits(_txtfx_code),0,100);
+			var wave_low = -2;
+			var wave_high = 2;
+			var frequency = 0.5;
+			var _time = current_time + time_offset;
+			var wave_midpoint = (wave_high - wave_low) * 0.5;
+			var wave_shift = wave_low + wave_midpoint + sin((((_time*0.001) + frequency) / frequency) * (pi*2)) * wave_midpoint;
+			draw_text_color(_xx,_yy-wave_shift,_char,_txt_col,_txt_col,_txt_col,_txt_col,1);
+		break;
+		
+		default: draw_text_color(_xx,_yy,_char,_txt_col,_txt_col,_txt_col,_txt_col,1);
 	}
 	#endregion
 	
@@ -197,7 +196,8 @@ while(i < min(type_count,_dia_len)) //min prevents i from calling an index outsi
 	if(_dia_x+_char_w+_word_w < _dia_box_w-10) {_char_w += string_width(_char);} else {_char_h+=1; _char_w = 0;}
 	
 	//breaks dialogue into blocks of three lines max
-	if(_char_h >= 3) {type_count = i; page_break_new_position = i; break;}
+	var _max_lines = 3;
+	if(_char_h >= _max_lines) {type_count = i; page_break_new_position = i; break;}
 }
 
 //resets font
