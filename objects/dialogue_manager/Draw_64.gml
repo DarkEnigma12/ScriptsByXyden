@@ -8,10 +8,8 @@ if(dialogue_text == noone) {exit;}
 var _dia_len = array_length(dialogue_text)-1;
 var _dia_box_w = sprite_get_width(speaker.textbox.sprite)*speaker.textbox.xscale;
 var _dia_box_h = sprite_get_height(speaker.textbox.sprite)*speaker.textbox.yscale;
-var _xpad = 0;
-var _ypad = 15;
-var _dia_x = speaker.textbox.x + _dia_box_w/3 + _xpad;
-var _dia_y = speaker.textbox.y + _ypad;
+var _dia_x = speaker.textbox.x + _dia_box_w/3;
+var _dia_y = speaker.textbox.y + 15;
 
 //draws nine slice text box sprite
 draw_sprite_ext(
@@ -26,11 +24,34 @@ draw_sprite_ext(
 	speaker.textbox.alpha
 );
 
-//sets font
-font_set(speaker.font);
+//draw portrait
+//testing
+draw_sprite_ext(spr_noone_talk_port,0,speaker.textbox.x,speaker.textbox.y,1,1,0,c_white,1);
+
+//moves along dialogue
+if(keyboard_check_pressed(confirm_button))
+{	
+	//moves to new page break
+	if(page_break_position != page_break_new_position)	{page_break_position = page_break_new_position;}
+	
+	//jumps dialogue
+	else if(type_count < _dia_len) {type_count = _dia_len;}
+	
+	//goes to next page
+	else if(timeline_position <= timeline_max_moment(timeline_index)) 
+	{
+		++timeline_position; 
+		page_break_position = 0; 
+		page_break_new_position = 0; 
+		type_count = 0;
+	}
+	
+	//destroys dialogue box if dialogue is done
+	else {instance_destroy(); exit;}
+}
 
 //manages typing speed
-if(type_count < _dia_len)
+if(type_count < _dia_len)&&(page_break_position == page_break_new_position)
 {
 	if(type_timer <= 0) 
 	{
@@ -42,10 +63,10 @@ if(type_count < _dia_len)
 		{
 				
 			case("#"): _delay = 20; break;
-			case("."): _delay = 20; break;
 			case(","): _delay = 10; break;
+			case("."):
 			case("!"):
-			case("?"): if (_next_chr == "?")||(_next_chr == "!") {_delay = 0;} else _delay = 20; break;
+			case("?"): if (_next_chr == " ") {_delay = 20;} else _delay = 0; break;
 				
 		}
 		
@@ -54,11 +75,14 @@ if(type_count < _dia_len)
 	} else {type_timer -= 1;}
 }
 
+//sets font
+font_set(speaker.font);
+
 //draws dialogue
 var _char,_char_w = 0,_char_h = 0;
-var _fnt_h = string_height("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), _line_gap = 10;
+var _fnt_h = string_height("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), _line_gap = 0;
 var _line_spacing = _fnt_h+_line_gap;
-var i = 0;
+var i = page_break_position;
 while(i < min(type_count,_dia_len)) //min prevents i from calling an index outside the dialogue array
 {
 	//increments i
@@ -67,33 +91,42 @@ while(i < min(type_count,_dia_len)) //min prevents i from calling an index outsi
 	//grabs character info
 	_char = dialogue_text[i][text.CHARACTER];
 	
-	//list of characters to ignore
+	//special characters
 	switch(_char)
 	{
+		//ignore list
 		case("#"):
 		case("|"):
 			continue;
 		break;
+		
+		//line break
+		case("\n"):
+			_char_h += 1;
+			_char_w  = 0;
+		break;
 	}
 	
 	//draws dialogue with text effects
-	switch(dialogue_text[i][text.EFFECT])
+	var _txtfx_code = dialogue_text[i][text.EFFECT];
+	switch(string_letters(_txtfx_code))
 	{
 		default: draw_text_color(_dia_x+_char_w,_dia_y+_char_h*_line_spacing,_char,c_white,c_white,c_white,c_white,1);
 	}
 	
+	//draws asterisk
+	if(show_asterisk)&&(_char_w == 0)&&
+	(ord(_char)>=65)&&(ord(_char)<=90) //checks ascii code to see if char is an upper case letter
+	{draw_text(_dia_x-20,_dia_y+_char_h*_line_spacing,"*");}
+	
 	//calculates the position of the next word
 	var _word_w = 0, _ii = i;
 	if(_ii+1 < _dia_len) {do{++_ii; _word_w += string_width(dialogue_text[_ii][text.CHARACTER]);} until((dialogue_text[_ii][text.CHARACTER] == " ")||(_ii+1>_dia_len));}
-	if(_dia_x+_char_w+_word_w < _dia_box_w) {_char_w += string_width(_char);} else {_char_h+=1; _char_w = 0;}
+	if(_dia_x+_char_w+_word_w < _dia_box_w-10) {_char_w += string_width(_char);} else {_char_h+=1; _char_w = 0;}
 	
-	//breaks dialogue if string height flows over the dialogue box height
-	
+	//breaks dialogue into blocks of three lines max
+	if(_char_h >= 3) {type_count = i; page_break_new_position = i; break;}
 }
-
-
-
-
 
 //resets font
 font_set();

@@ -1,5 +1,6 @@
 //All Expressions Available to the Dialogue Controller
-enum facialExpressions {
+enum facialExpressions 
+{
 				
 	NORMAL,		
 	HAPPY,		

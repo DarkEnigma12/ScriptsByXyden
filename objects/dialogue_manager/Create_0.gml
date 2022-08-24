@@ -9,6 +9,10 @@ timeline_loop = false;
 
 //vars
 dialogue_text = noone;
+page_break_position = 0;
+page_break_new_position = 0;
+confirm_button = vk_enter;
+show_asterisk = YES;
 
 //typewriter vars
 type_count = 0;
