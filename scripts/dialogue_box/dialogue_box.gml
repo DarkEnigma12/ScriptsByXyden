@@ -39,3 +39,21 @@ function dialogue_box_create(_dia,_fnt=-1,_tlkspd=talkSpeed.NORM,_expr=noone,_em
 		}
 	}
 }
+
+/// @desc sets up dialogue box for a prompt
+/// @func create_prompt
+/// @param response_array
+/// @param reaction_array
+function create_prompt(_respond,_react)
+{
+	if(is_array(_respond))&&(is_array(_react))
+	{
+		prompt =
+		{
+			responses : _respond,
+			reactions : _react,
+			choice : -1,
+			selector : spr_menu_selector
+		}
+	} else {prompt = noone;}
+}
