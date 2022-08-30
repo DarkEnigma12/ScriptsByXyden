@@ -9,3 +9,8 @@ enum talkSpeed
 	SLUGGISH = 5
 }
 #endregion
+
+#region TEXT BOX TYPES
+enum textBoxType {TEXTBOX,BUBBLE,FREETEXT};
+enum textBoxPos {TOP,BOTTOM};
+#endregion

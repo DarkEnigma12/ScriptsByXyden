@@ -44,11 +44,11 @@ function textfx_parser(_text,_default_fx="",_default_col=c_white)
 					switch(string_letters(_txtfx_code))
 					{
 						//RESETTERS//
+						case(""):
+						case("RESET"):
+						case("RESETALL"):	_txt_fx = _default_fx; _txt_col = _default_col; break;
 						case("RESETFX"):	_txt_fx = _default_fx; break;
 						case("RESETCOL"):	_txt_col = _default_col; break;
-						case("RESETALL"):
-						case("RESET"):
-						case(""):			_txt_fx = _default_fx; _txt_col = _default_col; break;
 						
 						//EFFECTS//
 						case("JITTER"):
@@ -71,9 +71,10 @@ function textfx_parser(_text,_default_fx="",_default_col=c_white)
 						case("BLUE"):		_txt_col = c_blue; break;
 						case("PURPLE"):		_txt_col = c_purple; break;
 					
-						//make color from hex code 
-						//(REMEMBER: GameMaker switches the blue component and red component |0xBBGGRR|)
-						default: if(string_length(_txtfx_code)==8)&&(string_copy(_txtfx_code,1,2)=="0X") {_txt_col = real(_txtfx_code);}
+						//SPECIAL CASES//
+						default:
+						//make color from hex code; REMEMBER: GameMaker switches the blue and red component - |0xBBGGRR|
+						if(string_length(_txtfx_code)==8)&&(string_copy(_txtfx_code,1,2)=="0X") {_txt_col = real(_txtfx_code);}
 					}
 					#endregion
 					

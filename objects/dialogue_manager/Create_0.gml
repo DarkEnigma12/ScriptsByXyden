@@ -7,13 +7,28 @@ timeline_speed = 0;
 timeline_loop = false;
 #endregion
 
-//vars
+#region VARS
+//general
 dialogue_text = noone;
-page_break_position = 0;
-page_break_new_position = 0;
 end_dialogue = NO;
 show_asterisk = YES;
 prompt = noone;
+
+//page break vars
+page_break_position = 0;
+page_break_new_position = 0;
+
+//typewriter vars
+type_count = 0;
+type_timer = 0;
+
+//dialogue types
+text_box_type = textBoxType.BUBBLE;
+text_box_pos = textBoxPos.BOTTOM;
+
+#endregion
+
+//controls
 dialogue_controls = 
 {
 	confirm		: function() {return keyboard_check_pressed(vk_enter);},
@@ -25,10 +40,6 @@ dialogue_controls =
 					left	: function() {return keyboard_check_pressed(ord("A"));},
 				}
 }
-
-//typewriter vars
-type_count = 0;
-type_timer = 0;
 
 #region METHODS
 //sets font

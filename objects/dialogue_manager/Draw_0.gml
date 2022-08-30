@@ -8,35 +8,61 @@ if(dialogue_text == noone) {exit;}
 font_set(speaker.font);
 
 #region Vars
-//diemensions
+//dimensions
+var _xscale = room_width/sprite_get_width(speaker.textbox.sprite);
+var _yscale = (room_height/3)/sprite_get_height(speaker.textbox.sprite);
+var _xx = 0;
+var _yy = (room_height-sprite_get_height(speaker.textbox.sprite)*_yscale)*text_box_pos;
 var _dia_len = array_length(dialogue_text)-1;
-var _dia_box_w = sprite_get_width(speaker.textbox.sprite)*speaker.textbox.xscale;
-var _dia_box_h = sprite_get_height(speaker.textbox.sprite)*speaker.textbox.yscale;
-var _dia_x = speaker.textbox.x + _dia_box_w/3;
-var _dia_y = speaker.textbox.y + 10;
+var _dia_box_w = sprite_get_width(speaker.textbox.sprite)*_xscale;
+var _dia_box_h = sprite_get_height(speaker.textbox.sprite)*_yscale;
+var _port_space = _dia_box_w/3;
+var _dia_x = _xx + _port_space;
+var _dia_y = _yy + 10;
 var _outline_padding = 5;
 var _talking = (type_count < _dia_len)&&(page_break_position == page_break_new_position);
 
 //drawing fx
 var _char,_char_w = 0,_char_h = 0, _max_lines = 3;
-var _fnt_h = string_height("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), _line_gap = 5;
-var _line_spacing = _fnt_h+_line_gap;
-var time_offset = 0;
-var wave_level = 0;
+var _fnt_h = string_height("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), _line_gap = 5, _line_spacing = _fnt_h+_line_gap;
+var time_offset = 0, wave_level = 0; //for sine wave function
 #endregion
 
-//draws nine slice text box sprite
-draw_sprite_ext(
-	speaker.textbox.sprite,
-	speaker.textbox.subimage,
-	speaker.textbox.x,
-	speaker.textbox.y,
-	speaker.textbox.xscale,
-	speaker.textbox.yscale,
-	0,
-	speaker.textbox.color,
-	speaker.textbox.alpha
-);
+#region TEXT BOX
+switch(text_box_type)
+{
+	case(textBoxType.TEXTBOX):
+		//draws nine slice text box sprite
+		draw_sprite_ext(
+			speaker.textbox.sprite,
+			speaker.textbox.subimage,
+			_xx, _yy, _xscale, _yscale, 0, c_white, 1
+		);
+	break;
+	
+	case(textBoxType.BUBBLE):
+		var _tri_base_w = 10;
+		var _speaker_x =speaker.id.x;
+		var _speaker_y =speaker.id.y;
+		var _bubb_x = _xx + _dia_box_w/2;
+		var _bubb_y = _yy + _dia_box_h/2;
+		var _base_point1_x = _bubb_x + lengthdir_x(_tri_base_w, point_direction(_bubb_x,_bubb_y,_speaker_x,_speaker_y)+90);
+		var _base_point1_y = _bubb_y + lengthdir_y(_tri_base_w, point_direction(_bubb_x,_bubb_y,_speaker_x,_speaker_y)+90);
+		var _base_point2_x = _bubb_x + lengthdir_x(_tri_base_w, point_direction(_bubb_x,_bubb_y,_speaker_x,_speaker_y)-90);
+		var _base_point2_y = _bubb_y + lengthdir_y(_tri_base_w, point_direction(_bubb_x,_bubb_y,_speaker_x,_speaker_y)-90);
+		draw_primitive_begin(pr_trianglelist);
+		draw_vertex(_speaker_x,_speaker_y);
+		draw_vertex(_base_point1_x,_base_point1_y);
+		draw_vertex(_base_point2_x,_base_point2_y);
+		draw_primitive_end();
+		draw_roundrect(_xx,_yy,_xx+_dia_box_w-1,_yy+_dia_box_h-1,0);
+		if(dialogue_text[type_count][text.COLOR] == c_white) {dialogue_text[type_count][text.COLOR] = c_black;}
+		if(prompt != noone) {if(prompt.col == c_white) {prompt.col = c_black;}}
+		
+	break;
+}
+ 
+#endregion
 
 //draw portrait
 if(speaker.current_emotion != noone)&&(speaker.expressions[speaker.current_emotion] != noone)
@@ -60,20 +86,20 @@ if(speaker.current_emotion != noone)&&(speaker.expressions[speaker.current_emoti
 			
 			default: 
 				if(type_timer <= 0) {audio_play_sound(speaker.voice,1,false);}
-				_portrait_mouth_image = (type_count mod _syllable_test == 0) ? portaitMouth.CLOSED : portaitMouth.OPENED;
+				_portrait_mouth_image = !(type_count mod _syllable_test) ? portaitMouth.CLOSED : portaitMouth.OPENED;
 		}
 	}
 	
 	//base portrait dimensions: 64 x 64; any perfect scale of that works too
 	var _port_spr = speaker.expressions[speaker.current_emotion];
 	var _port_scale = 64/sprite_get_width(_port_spr);
-	draw_sprite_ext(_port_spr,_portrait_mouth_image,speaker.textbox.x+_outline_padding,speaker.textbox.y+_outline_padding,_port_scale,_port_scale,0,c_white,1);
+	draw_sprite_ext(_port_spr,_portrait_mouth_image,_xx+_outline_padding,_yy+_outline_padding,_port_scale,_port_scale,0,c_white,1);
 }
 //changes dialogue origin if portrait is not drawn
 else
 {
-	_dia_x = speaker.textbox.x + 30;
-	_dia_y = speaker.textbox.y + 10;
+	_dia_x = _xx + 30;
+	_dia_y = _yy + 10;
 }
 
 #region PROMPT SYSTEM
@@ -86,6 +112,7 @@ if((prompt != noone)&&(type_count >= _dia_len))
 	{
 		case(2):
 			//draws options
+			var _prev_col = draw_get_color(); draw_set_color(prompt.col);
 			var _opt1 = 0, _opt2 = 1;
 			var _spacing = 5;
 			var _re_line = _dia_y+(_max_lines-1)*_line_spacing;
@@ -97,6 +124,7 @@ if((prompt != noone)&&(type_count >= _dia_len))
 			//second option
 			draw_sprite_ext(_selector_spr,0,_opt_x2-(_selector_w + _spacing),_re_line+_fnt_h/2,1,1,0,c_white,(prompt.choice == _opt2));
 			draw_text(_opt_x2,_re_line,prompt.responses[_opt2]);
+			draw_set_color(_prev_col);
 			
 			//manages selection
 			if
@@ -245,7 +273,7 @@ while(i < min(type_count,_dia_len))
 	//calculates the position of the next word
 	var _word_w = 0, _ii = i;
 	if(_ii+1 < _dia_len) {do{++_ii; _word_w += string_width(dialogue_text[_ii][text.CHARACTER]);} until((dialogue_text[_ii][text.CHARACTER] == " ")||(_ii+1>_dia_len));}
-	if(_dia_x+_char_w+_word_w < _dia_box_w-10) {_char_w += string_width(_char);} else {_char_h+=1; _char_w = 0;}
+	if(_dia_x+_char_w+_word_w < _dia_box_w-2*_outline_padding) {_char_w += string_width(_char);} else {_char_h+=1; _char_w = 0;}
 	
 	//breaks dialogue into blocks of three lines max
 	if(_char_h >= _max_lines) {type_count = i; page_break_new_position = i; break;}
