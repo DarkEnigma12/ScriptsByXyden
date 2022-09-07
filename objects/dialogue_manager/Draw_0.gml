@@ -164,11 +164,11 @@ if(_talking)
 		switch(_test_chr)
 		{
 				
-			case("#"): type_delay = 20; break;
+			case("#"): type_delay = 30; break;
 			case(","): type_delay = 10; break;
 			case("."):
 			case("!"):
-			case("?"): if (_next_chr == " ")||(_next_chr == "\n") {type_delay = 30;} else type_delay = 5; break;
+			case("?"): if (_next_chr == " ")||(_next_chr == "\n") {type_delay = 20;} else type_delay = 0; break;
 				
 		}
 		
@@ -184,7 +184,7 @@ var _test_chr = dialogue_text[min(type_count,_dia_len)][text.CHARACTER];
 var _portrait_mouth_image = portaitMouth.CLOSED;
 if(_talking)
 {
-	switch(string_upper(_test_chr))
+	switch(_test_chr)
 	{
 		case("\n"):
 		case("#"):
