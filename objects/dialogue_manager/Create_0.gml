@@ -11,7 +11,6 @@ timeline_loop = false;
 //general
 dialogue_text = noone;
 end_dialogue = NO;
-show_asterisk = YES;
 prompt = noone;
 
 //page break vars
@@ -21,10 +20,19 @@ page_break_new_position = 0;
 //typewriter vars
 type_count = 0;
 type_timer = 0;
+type_delay = 0;
 
 //dialogue types
-text_box_type = textBoxType.BUBBLE;
+text_box_type = textBoxType.TEXTBOX;
 text_box_pos = textBoxPos.BOTTOM;
+
+//asterisk system
+asterisk =
+{
+	use		: YES,
+	c_col	: c_white,
+	alpha	: 1
+}
 
 #endregion
 
