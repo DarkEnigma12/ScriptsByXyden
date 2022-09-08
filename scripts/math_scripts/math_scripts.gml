@@ -31,20 +31,15 @@ function bool_to_vector(_bool)
 ///@func chance_check(chance, out_of)
 ///@param {real} chance
 ///@param {real} [out_of]
-function chance_check(chance,total=(chance<1) ? 1 : 100) {
-	
-	//var to hold success
-	var success;
-	
+function chance_check(chance,total=(chance<1) ? 1 : 100) 
+{
 	//returns guaranteed results
 	if (chance <= 0) {success = false;}
 	if (total  <= 0) {success = true;}
 	
 	//calculates success
 	var check = random_range(total!=1,total);
-	if (check <= chance) {success = true;}
-	else success = false;
-	
+	var success = (check <= chance);
 	show_debug_message("function chance_check() - check is a " + ((success) ? "SUCCESS" : "FAILURE") + " - check("+string(check)+((success) ? " < " : " > ")+string(chance)+" out of "+string(total)+")");
 	return success;
 	

@@ -2,6 +2,6 @@
 
 display_set_gui_size(320,240);
 
-var _test = hex_to_dec("FCBA03");
+var _test = chance_check(10);
 
 exit;
