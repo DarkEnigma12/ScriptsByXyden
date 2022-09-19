@@ -64,7 +64,7 @@ function choose_id(itm_pool) {
 		
 	}
 	
-	//retruns a randomly chosen id based off weight
+	//returns a randomly chosen id based off weight
 	var chance = random(weight_total);
 	var cursor = 0;
 	var itm = noone;
@@ -80,19 +80,30 @@ function choose_id(itm_pool) {
 	
 }
 
-/// @func   is_power(value, base)
-///
-/// @desc   Returns true if a given value is a power of the a given base,
-///         or false if it is not (or if it cannot be determined).
-///
-/// @param  {real}      value       number
-/// @param  {real}      base        exponential base
-///
-/// @return {bool}      true if a power of base
- 
-function is_power(value, base)
+/// @desc returns a value within two limits as if it looped around
+/// @func loop
+/// @param val
+/// @param delta
+/// @param upper_limit
+/// @param lower_limit
+function loop(_val,_delta,_upper,_lower=0)
 {
-    if (base <= 1) return false;
-	var _test = logn(10, 1000); //this throws a false when it shouldn't; float point math error
-    return ((logn(base, value) mod 1) == 0);
+	while(_delta != 0)
+	{
+		_val += sign(_delta);
+		_delta -= sign(_delta);
+		if(_val>_upper) {_val = _lower;}
+		if(_val<_lower) {_val = _upper;}
+	}
+	return _val;
+}
+
+/// @desc loops value within upper and lower limit and returns result
+/// @func clamp_within_loop
+/// @param val
+/// @param upper_limit
+/// @param lower_limit
+function clamp_within_loop(_val,_upper,_lower=0)
+{
+	return ((sign(_val)==-1) ? _upper+1 : _lower) + _val mod (_upper-_lower+1);
 }

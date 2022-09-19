@@ -2,12 +2,11 @@
 /// @func dialogue_box_create
 /// @param dialogue
 /// @param font
-/// @param talk_speed
-/// @param expression_array
-/// @param starting_emotion
+/// @param expression
 /// @param voice_sound
+/// @param talk_speed
 /// @param text_box_sprite
-function dialogue_box_create(_dia,_fnt=-1,_tlkspd=talkSpeed.NORM,_expr=noone,_emot=noone,_v=snd_text_box,_txtbx_spr=spr_blackbox_whiteborder)
+function dialogue_box_create(_dia,_fnt=-1,_expr=noone,_v=snd_text_box,_tlkspd=talkSpeed.NORM,_txtbx_spr=spr_blackbox_whiteborder)
 {
 	with(instance_create_layer(0,0,layer,dialogue_manager))
 	{	
@@ -22,8 +21,7 @@ function dialogue_box_create(_dia,_fnt=-1,_tlkspd=talkSpeed.NORM,_expr=noone,_em
 		{
 			id : other.id,
 			dialogue : _dia,
-			expressions : _expr,
-			current_emotion :  _emot,
+			expression : _expr,
 			draw_face : YES,
 			voice : _v,
 			font : _fnt,
@@ -86,8 +84,8 @@ function create_prompt(_respond,_react,_color=c_white)
 
 /// @desc tells system not to draw the protrait
 /// @func dialogue_box_show_portrait
-/// @param bool
-function dialogue_box_show_portrait(_bool) {speaker.draw_face = bool(_bool);}
+/// @param expression - leave blank to use no expression
+function dialogue_box_show_portrait(_expres=noone) {speaker.expression = _expres;}
 
 /// @desc tells system whoch text box type to use
 /// @func dialogue_box_textbox_type

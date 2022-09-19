@@ -201,10 +201,10 @@ if(_talking)
 }
 
 //draw portrait
-if(speaker.draw_face)&&(speaker.current_emotion >= 0)&&(speaker.expressions[speaker.current_emotion] != noone)&&(text_box_type == textBoxType.TEXTBOX)
+if(speaker.draw_face)&&(speaker.expression != noone)&&(text_box_type == textBoxType.TEXTBOX)
 {	
 	//base portrait dimensions: 64 x 64; any perfect scale of that works too
-	var _port_spr = speaker.expressions[speaker.current_emotion];
+	var _port_spr = speaker.expression;
 	var _port_scale = 64/sprite_get_width(_port_spr);
 	draw_sprite_ext(_port_spr,_portrait_mouth_image,_xx+_outline_padding,_yy+_outline_padding,_port_scale,_port_scale,0,c_white,1);
 }
