@@ -107,3 +107,27 @@ function clamp_within_loop(_val,_upper,_lower=0)
 {
 	return ((sign(_val)==-1) ? _upper+1 : _lower) + _val mod (_upper-_lower+1);
 }
+
+/// @func   gauss(m, sd)
+/// @desc   Returns a pseudo-random number with an exact Gaussian distribution.
+/// @param  {real}      m           mean value of the distribution
+/// @param  {real}      sd          standard deviation of distribution
+/// @param	{real}		max_units	clamps curve at set number of standard deviation units
+/// @param	{real}		extr		forces function to return extreme values (-1:lowest possible, 1:highest possible, 0:ignore)
+/// @return {real}      random number with Gaussian distribution
+/// GMLscripts.com/license		base code altered by XydenKonos
+
+function gauss(m, sd, max_units=3, extr=0)
+{
+    var x1, x2, w, limit = clamp(extr,-1,1);
+	
+    do 
+	{
+        x1 = random(2) - 1;
+        x2 = random(2) - 1;
+        w = (x1 * x1) + (x2 * x2);
+    } until (0 < w && w < 1);
+
+    w = sqrt(-2 * ln(w) / w);
+    return m + ((limit==0) ? (sd * clamp(x1 * w, max_units*-1, max_units)) : (sd * max_units * limit));
+}

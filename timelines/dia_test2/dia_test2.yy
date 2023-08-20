@@ -1,13 +1,12 @@
 {
+  "resourceType": "GMTimeline",
+  "resourceVersion": "1.0",
+  "name": "dia_test2",
   "momentList": [
-    {"moment":0,"evnt":{"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMMoment",},
+    {"resourceType":"GMMoment","resourceVersion":"1.0","name":"","evnt":{"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},"moment":0,},
   ],
   "parent": {
     "name": "Test Dialogue",
     "path": "folders/ENGINES/UT DIALOGUE ENGINE/Test Dialogue.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "dia_test2",
-  "tags": [],
-  "resourceType": "GMTimeline",
 }
