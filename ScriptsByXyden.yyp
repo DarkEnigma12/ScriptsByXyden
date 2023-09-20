@@ -60,6 +60,7 @@
   },
   "resources": [
     {"id":{"name":"spr_menu_selector","path":"sprites/spr_menu_selector/spr_menu_selector.yy",},},
+    {"id":{"name":"Color","path":"scripts/Color/Color.yy",},},
     {"id":{"name":"debug_draw_info","path":"scripts/debug_draw_info/debug_draw_info.yy",},},
     {"id":{"name":"Globals_Macros_Enums","path":"scripts/Globals_Macros_Enums/Globals_Macros_Enums.yy",},},
     {"id":{"name":"music_scripts","path":"scripts/music_scripts/music_scripts.yy",},},
@@ -74,6 +75,7 @@
     {"id":{"name":"dia_test1","path":"timelines/dia_test1/dia_test1.yy",},},
     {"id":{"name":"struct_scripts","path":"scripts/struct_scripts/struct_scripts.yy",},},
     {"id":{"name":"spr_noone_excited_port","path":"sprites/spr_noone_excited_port/spr_noone_excited_port.yy",},},
+    {"id":{"name":"Time","path":"scripts/Time/Time.yy",},},
     {"id":{"name":"camera_effects","path":"scripts/camera_effects/camera_effects.yy",},},
     {"id":{"name":"obj_master_camera","path":"objects/obj_master_camera/obj_master_camera.yy",},},
     {"id":{"name":"snd_text_box","path":"sounds/snd_text_box/snd_text_box.yy",},},

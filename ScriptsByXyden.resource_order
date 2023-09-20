@@ -2,6 +2,7 @@
   "FolderOrderSettings": [],
   "ResourceOrderSettings": [
     {"name":"spr_menu_selector","order":1,"path":"sprites/spr_menu_selector/spr_menu_selector.yy",},
+    {"name":"Color","order":1,"path":"scripts/Color/Color.yy",},
     {"name":"par_bullet","order":1,"path":"objects/par_bullet/par_bullet.yy",},
     {"name":"Dialogue_Enum","order":1,"path":"scripts/Dialogue_Enum/Dialogue_Enum.yy",},
     {"name":"color_scripts","order":2,"path":"scripts/color_scripts/color_scripts.yy",},
@@ -11,6 +12,7 @@
     {"name":"test_bullet_spr","order":3,"path":"sprites/test_bullet_spr/test_bullet_spr.yy",},
     {"name":"struct_scripts","order":9,"path":"scripts/struct_scripts/struct_scripts.yy",},
     {"name":"spr_noone_excited_port","order":1,"path":"sprites/spr_noone_excited_port/spr_noone_excited_port.yy",},
+    {"name":"Time","order":12,"path":"scripts/Time/Time.yy",},
     {"name":"array_scripts","order":4,"path":"scripts/array_scripts/array_scripts.yy",},
     {"name":"obj_wall","order":1,"path":"objects/obj_wall/obj_wall.yy",},
     {"name":"how_to","order":1,"path":"notes/how_to/how_to.yy",},
