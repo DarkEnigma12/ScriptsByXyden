@@ -19,9 +19,9 @@
 #macro NO					false
 #macro ALPHA_THRESHOLD		0.25
 #macro RIGHT				0
-#macro LEFT				180
-#macro UP				90
-#macro DOWN				270
+#macro LEFT					180
+#macro UP					90
+#macro DOWN					270
 
 //Music(Inlcuded Files)//
 #macro MUSICPRIORITY		999

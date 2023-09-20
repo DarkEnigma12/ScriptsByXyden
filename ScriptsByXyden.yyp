@@ -97,6 +97,7 @@
     {"id":{"name":"invisible_wall_spr","path":"sprites/invisible_wall_spr/invisible_wall_spr.yy",},},
     {"id":{"name":"gui_placement","path":"scripts/gui_placement/gui_placement.yy",},},
     {"id":{"name":"snd_noone_voice","path":"sounds/snd_noone_voice/snd_noone_voice.yy",},},
+    {"id":{"name":"oMenu","path":"objects/oMenu/oMenu.yy",},},
     {"id":{"name":"text_effects_parser","path":"scripts/text_effects_parser/text_effects_parser.yy",},},
     {"id":{"name":"instance_scale","path":"scripts/instance_scale/instance_scale.yy",},},
     {"id":{"name":"obj_game_clock","path":"objects/obj_game_clock/obj_game_clock.yy",},},
