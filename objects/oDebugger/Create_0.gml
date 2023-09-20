@@ -8,6 +8,7 @@ debug_stm =
 	cmd_string			: "",		//holds the command code to be parsed
 	parsed_command		: [],		//holds the parsed code, delimiter - "|"
 	delimiter			: "|",		//char used to parse code
+	code_exe			: NO,		//bool to flag successful code
 	code_error			: NO,		//bool to flag a code as wrong
 	#endregion
 	
@@ -46,20 +47,20 @@ debug_stm =
 	},
 	//command window
 	command_prompt	: function()
-	{	
-		//types to command string
-		if(string_length(keyboard_string)>0)
-		{
-			if(code_error) {code_error = NO; cmd_string = "";}	//clears code error
-			var _cmmd_str_len = 64;
-			if(string_length(cmd_string)<_cmmd_str_len) {cmd_string += keyboard_string;}
-			keyboard_string = "";
-		}
-		
+	{
 		//formats string
 		//forces uppercase
 		cmd_string = string_upper(cmd_string);
 		
+		//types to command string
+		if(string_length(keyboard_string)>0)
+		{
+			if(code_error) {code_error = NO; cmd_string = "";}	//clears code error
+			if(code_exe) {code_exe = NO; cmd_string = "";}		//clears code exe
+			var _cmmd_str_len = 64;
+			if(string_length(cmd_string)<_cmmd_str_len) {cmd_string += keyboard_string;}
+			keyboard_string = "";
+		}
 		//backspace
 			//timer
 			var _bk_spd = 3;
@@ -71,6 +72,7 @@ debug_stm =
 		if(keyboard_check(vk_backspace) and (bksp_timer == 0))
 		{
 			if(code_error) {code_error = NO; cmd_string = "";}	//clears code error
+			if(code_exe) {code_exe = NO; cmd_string = "";}		//clears code exe
 			
 			if(bksp_held == NO) {bksp_timer = _bk_delay; bksp_held = YES;}
 			else {bksp_timer = _bk_spd;}
@@ -78,7 +80,7 @@ debug_stm =
 			cmd_string = string_delete(cmd_string,string_length(cmd_string),1);
 		}
 		//clears command
-		if(keyboard_check_released(vk_delete)) {cmd_string = ""; keyboard_string = ""; code_error = NO;}
+		if(keyboard_check_released(vk_delete)) {cmd_string = ""; keyboard_string = ""; code_exe = NO; code_error = NO;}
 		
 		//enters command to parse
 		if(keyboard_check_pressed(vk_enter) and (string_length(cmd_string)>0))
@@ -100,6 +102,12 @@ debug_stm =
 	{
 		switch(parsed_command[0])
 		{
+			case("HI"):
+				cmd_string = choose("HELLO","HELLO","HELLO!","DON'T YOU HAVE ANYTHING BETTER TO DO?");
+				code_exe = YES;
+				clear_parser();
+			break;
+			
 			case("ESCAPE"):
 			case("EXIT"):
 			case("CLOSE"):

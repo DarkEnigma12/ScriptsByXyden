@@ -1,4 +1,4 @@
-/// @description Debug info
+/// @description 
 
 
 #region DRAWS DEBUG INFO
@@ -30,7 +30,10 @@ var _str_y = _yy + 10;
 var _ins_pt_len = string_height(ALPHA_UPPER);
 draw_set_color(invert_color(_win_col));
 if(insertion_point_blink()) {draw_line(_str_x+string_width(_str),_str_y,_str_x+string_width(_str),_str_y+_ins_pt_len);}
-draw_set_color(debug_stm.code_error ? #EE4B2B : invert_color(_win_col));
+var _err_col = #EE4B2B;
+var _exe_col = #0D98BA;
+var _resp_col = debug_stm.code_exe ? _exe_col : (debug_stm.code_error ? _err_col : invert_color(_win_col));
+draw_set_color(_resp_col);
 draw_text(_str_x,_str_y,_str);
 
 //draws game version number
