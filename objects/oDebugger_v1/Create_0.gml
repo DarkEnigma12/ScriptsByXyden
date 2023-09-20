@@ -36,6 +36,13 @@ debug_stm =
 		parsed_command = [];
 		running = command_prompt;
 	},
+	//sets error
+	set_error	: function(_err_mssg="ERROR")
+	{
+		cmd_string = _err_mssg; 
+		code_error = YES; 
+		clear_parser();
+	},
 	#endregion
 	
 	#region STATES
@@ -102,8 +109,11 @@ debug_stm =
 	{
 		switch(parsed_command[0])
 		{
+			case("SHOWINFO"):
+				
+			break;
 			case("HI"):
-				cmd_string = choose("HELLO","HELLO","HELLO!","DON'T YOU HAVE ANYTHING BETTER TO DO?");
+				cmd_string = choose("HELLO","HELLO!","DON'T YOU HAVE ANYTHING BETTER TO DO?");
 				code_exe = YES;
 				clear_parser();
 			break;
@@ -112,19 +122,11 @@ debug_stm =
 			case("EXIT"):
 			case("CLOSE"):
 				if(os_type == os_windows) or (os_type == os_macosx) or (os_type == os_linux) {game_end();}
-				else 
-				{
-					cmd_string = string("WRONG OS TYPE, {0} FAILED.",parsed_command[0]);
-					code_error = YES;
-					clear_parser();
-				}
+				else {set_error(string("WRONG OS TYPE, {0} FAILED.",parsed_command[0]));}
 			break;
 			
 			//code error
-			default: 
-				cmd_string = "ERROR"; 
-				code_error = YES; 
-				clear_parser();
+			default: set_error();
 		}
 		
 		//closes command prompt

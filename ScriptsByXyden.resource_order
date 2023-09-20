@@ -3,6 +3,7 @@
   "ResourceOrderSettings": [
     {"name":"spr_menu_selector","order":1,"path":"sprites/spr_menu_selector/spr_menu_selector.yy",},
     {"name":"Color","order":1,"path":"scripts/Color/Color.yy",},
+    {"name":"oDebugger_v1","order":4,"path":"objects/oDebugger_v1/oDebugger_v1.yy",},
     {"name":"par_bullet","order":1,"path":"objects/par_bullet/par_bullet.yy",},
     {"name":"Dialogue_Enum","order":1,"path":"scripts/Dialogue_Enum/Dialogue_Enum.yy",},
     {"name":"color_scripts","order":2,"path":"scripts/color_scripts/color_scripts.yy",},
@@ -19,7 +20,6 @@
     {"name":"collision_line_find_nearest_point","order":5,"path":"scripts/collision_line_find_nearest_point/collision_line_find_nearest_point.yy",},
     {"name":"math_scripts","order":8,"path":"scripts/math_scripts/math_scripts.yy",},
     {"name":"obj_enemy","order":2,"path":"objects/obj_enemy/obj_enemy.yy",},
-    {"name":"oDebugger","order":3,"path":"objects/oDebugger/oDebugger.yy",},
     {"name":"generator_spr","order":2,"path":"sprites/generator_spr/generator_spr.yy",},
     {"name":"binary_math_scripts","order":11,"path":"scripts/binary_math_scripts/binary_math_scripts.yy",},
     {"name":"pixel_clean_up","order":3,"path":"scripts/pixel_clean_up/pixel_clean_up.yy",},
