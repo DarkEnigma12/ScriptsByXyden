@@ -1,3 +1,4 @@
+/*
 /// @description sets up camera
 /// @function camera_setup()
 /// @param viewport

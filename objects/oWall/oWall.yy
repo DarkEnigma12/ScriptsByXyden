@@ -1,12 +1,8 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_wall",
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":1,"eventType":3,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-  ],
+  "name": "oWall",
+  "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
@@ -34,5 +30,5 @@
     "path": "sprites/invisible_wall_spr/invisible_wall_spr.yy",
   },
   "spriteMaskId": null,
-  "visible": false,
+  "visible": true,
 }

@@ -112,6 +112,7 @@ debug_stm =
 			case("SHOWINFO"):
 				
 			break;
+			
 			case("HI"):
 				cmd_string = choose("HELLO","HELLO!","DON'T YOU HAVE ANYTHING BETTER TO DO?");
 				code_exe = YES;

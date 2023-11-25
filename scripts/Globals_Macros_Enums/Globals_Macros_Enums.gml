@@ -5,8 +5,6 @@
 #macro TITLE				game_display_name
 #macro AUTHOR				"XydenKonos"
 #macro CAPTIONS				["Made by Xyden"]
-#macro GAME_RES_WIDTH		640
-#macro GAME_RES_HEIGHT		480
 #macro DEVELOPERBUILD		1				//set to false when releasing a build
 #macro DEBUGKEY				"xydenkonos"	//password to activate debug mode
 #macro SAVEFILENAME			"game_file.sav"
@@ -23,6 +21,11 @@
 #macro UP					90
 #macro DOWN					270
 
+//Camera//
+#macro NO_CAMERA_ASSIGNED	-1
+#macro GAME_RES_WIDTH		640
+#macro GAME_RES_HEIGHT		480
+
 //Music(Inlcuded Files)//
 #macro MUSICPRIORITY		999
 #macro MUSICDIRECTORY		"music/"
@@ -36,7 +39,7 @@
 //Constants//
 //Object IDs
 #macro PLAYER				obj_player
-#macro WALL					obj_wall
+#macro WALL					oWall
 #macro AlwaysActive			[PLAYER]
 
 //Debug Grid Vars
@@ -73,12 +76,5 @@ function global_init()
 	//Debug var
 	global.debug = false; //use DEBUGKEY to toggle var
 	
-	//Camera vars
-	global.fullscreen_button = vk_f4;
-	global.master_camera = noone;
-	global.master_view = 0;
-	
-	//game vars
-	global.test = 1;
 }
 #endregion

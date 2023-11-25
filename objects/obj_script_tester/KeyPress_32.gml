@@ -1,9 +1,22 @@
 /// @description Spawns Instance
 
 
-if(!instance_exists(dialogue_manager))
+var _array =
+[
+    "apple",
+    "banana",
+    "coconut",
+    "dragonfruit"
+]
+
+var _test="apple"
+
+var _arr_func = function(_val,_index,_tst=_test)
 {
-	dialogue_box_create(dia_test1,determ_12pt_font,spr_noone_talk_port,snd_noone_voice);
+	var _t = _tst;
+    return _val == _tst;
 }
 
-exit;
+var _contains_apple = array_any(_array, _arr_func);
+
+show_debug_message(_contains_apple); // prints 1 (true)
