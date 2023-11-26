@@ -58,6 +58,23 @@ state =
 	#endregion
 } state.run = state.following; //sets default state
 
+#region CAMERA EFFECTS
+//camera shake
+shake =
+{
+	x			: 0,
+	y			: 0,
+	magnitude	: 0,	//how strong the shake will be
+	//duration	: 0,	//how long the shake lasts
+	decay		: 0,	//how fast the shake weakens
+	weight		:		//what the shake prefers
+	{
+		x_axis	: 0,
+		y_axis	: 0,
+	}
+}
+#endregion
+
 #region METHODS
 //view enable method
 view_activate = function(_view=global.camera.view)
@@ -68,7 +85,7 @@ view_activate = function(_view=global.camera.view)
 }
 
 //fullscreen toggle method
-fullscreen_toggle = function()
+camera_resize = function()
 {
 	//vars
 	var _fullscreen = window_get_fullscreen();
@@ -80,12 +97,12 @@ fullscreen_toggle = function()
 	window_set_size(_w_scaled,_h_scaled);
 	
 	//resizes application surface
-	var _sub_pixel_offset = 0;
+	var _sub_pixel_offset = 2;
 	var _appsurf_w = _fullscreen ? display_get_width() : _w_scaled;
 	var _appsurf_h = _fullscreen ? display_get_height() : _h_scaled;
 	surface_resize(application_surface,_appsurf_w+_sub_pixel_offset,_appsurf_h+_sub_pixel_offset);
 	
-	//resizes view to maintain aspect ratio and scale
+	//resizes view
 	var _view_w = _fullscreen ? display_get_width()/floor(_scale) : GAME_RES_WIDTH;
 	var _view_h = _fullscreen ? display_get_height()/floor(_scale) : GAME_RES_HEIGHT;
 	camera_set_view_size(view_camera[global.camera.view],_view_w,_view_h);
@@ -95,8 +112,20 @@ fullscreen_toggle = function()
 	
 	//debugging
 	show_debug_message("\nDimensions\n Window: {0} x {1}\n App Surface: {2} by {3}\n View: {4} by {5}\n Target Res: {6} by {7}\n",window_get_width(),window_get_height(),surface_get_width(application_surface),surface_get_height(application_surface),camera_get_view_width(view_camera[global.camera.view]),camera_get_view_height(view_camera[global.camera.view]),GAME_RES_WIDTH,GAME_RES_HEIGHT);
-} fullscreen_toggle();
+} camera_resize();
 
 #endregion
 
-
+#region FUNCTIONS
+//sets camera shake
+/// @func camera_shake(camera controller,magintude,decay,weight_x,weight_y)
+function camera_shake(_cam,_mag,_decay,_weight_x=1,_weight_y=1)
+{
+	_cam.shake.magnitude	= _mag;
+	//_cam.shake.duration		= _dur;
+	_cam.shake.decay		= _decay;
+	_cam.shake.weight.x_axis= _weight_x;
+	_cam.shake.weight.y_axis= _weight_y;
+	
+}
+#endregion
