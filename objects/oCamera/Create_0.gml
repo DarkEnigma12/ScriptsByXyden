@@ -35,7 +35,7 @@ global.camera =
 state = 
 {
 	#region VARS
-	//holds states that is running
+	//holds state that is running
 	run	: noone,
 	
 	//follow vars
@@ -65,7 +65,6 @@ shake =
 	x			: 0,
 	y			: 0,
 	magnitude	: 0,	//how strong the shake will be
-	//duration	: 0,	//how long the shake lasts
 	decay		: 0,	//how fast the shake weakens
 	weight		:		//what the shake prefers
 	{
@@ -118,11 +117,10 @@ camera_resize = function()
 
 #region FUNCTIONS
 //sets camera shake
-/// @func camera_shake(camera controller,magintude,decay,weight_x,weight_y)
+/// @func camera_shake(camera controller,magnitude,decay,weight_x,weight_y)
 function camera_shake(_cam,_mag,_decay,_weight_x=1,_weight_y=1)
 {
 	_cam.shake.magnitude	= _mag;
-	//_cam.shake.duration		= _dur;
 	_cam.shake.decay		= _decay;
 	_cam.shake.weight.x_axis= _weight_x;
 	_cam.shake.weight.y_axis= _weight_y;
