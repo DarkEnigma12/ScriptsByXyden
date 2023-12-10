@@ -82,10 +82,10 @@ function choose_id(itm_pool) {
 
 /// @desc returns a value within two limits as if it looped around
 /// @func loop
-/// @param val
-/// @param delta
-/// @param upper_limit
-/// @param lower_limit
+/// @param val			current value
+/// @param delta		the value being added or subtracted to val
+/// @param upper_limit	the highest number value can be
+/// @param lower_limit	the lowest number value can be (default is zero)
 function loop(_val,_delta,_upper,_lower=0)
 {
 	while(_delta != 0)
