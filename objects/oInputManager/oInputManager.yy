@@ -1,10 +1,9 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_room_controller",
+  "name": "oInputManager",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":75,"eventType":7,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":17,"eventType":5,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],

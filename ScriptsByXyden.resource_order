@@ -1,6 +1,7 @@
 {
   "FolderOrderSettings": [
     {"name":"Camera System","order":1,"path":"folders/Camera System.yy",},
+    {"name":"Debugging System","order":2,"path":"folders/Debugging System.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_menu_selector","order":1,"path":"sprites/spr_menu_selector/spr_menu_selector.yy",},
@@ -30,10 +31,10 @@
     {"name":"gui_placement","order":6,"path":"scripts/gui_placement/gui_placement.yy",},
     {"name":"oMenu","order":2,"path":"objects/oMenu/oMenu.yy",},
     {"name":"instance_scale","order":7,"path":"scripts/instance_scale/instance_scale.yy",},
-    {"name":"obj_game_clock","order":2,"path":"objects/obj_game_clock/obj_game_clock.yy",},
+    {"name":"oGameClock","order":2,"path":"objects/oGameClock/oGameClock.yy",},
     {"name":"spr_noone_npc_ori","order":2,"path":"sprites/spr_noone_npc_ori/spr_noone_npc_ori.yy",},
     {"name":"spr_noone_annoyed_port","order":2,"path":"sprites/spr_noone_annoyed_port/spr_noone_annoyed_port.yy",},
-    {"name":"obj_room_controller","order":1,"path":"objects/obj_room_controller/obj_room_controller.yy",},
+    {"name":"oInputManager","order":1,"path":"objects/oInputManager/oInputManager.yy",},
     {"name":"obj_script_tester","order":5,"path":"objects/obj_script_tester/obj_script_tester.yy",},
     {"name":"spr_noone_npc","order":1,"path":"sprites/spr_noone_npc/spr_noone_npc.yy",},
   ],
