@@ -15,8 +15,8 @@ global.camera =
 	aspect_ratio : GAME_RES_WIDTH/GAME_RES_HEIGHT,
 	toggle :
 	{
-		fullscreen	: NO,					//set this to true to toggle fullscreen
-		clamp_room	: NO,					//set this to true to keep camera within room
+		fullscreen	: NO,			//set this to true to toggle fullscreen
+		clamp_room	: NO,			//set this to true to keep camera within room
 	},
 	scale :	
 	{
@@ -29,34 +29,44 @@ global.camera =
 		max_lvl	: 4,
 		min_lvl	: 1,
 	},
+	focus_point :	//used to direct camera to a certain point in the room
+	{
+		x	: room_width/2,
+		y	: room_height/2,
+	},
 }
 
 //state machine
 state = 
 {
 	#region VARS
-	//holds state that is running
 	run	: noone,
+	camera_man : global.camera.holder,
 	
 	//follow vars
 	follow :
 	{
-		id		: obj_player,
+		id		: noone,
 		speed	: 0.1,
 	},
 	#endregion
 	
 	#region STATES
-	following	: function()
+	follow_instance : function()
 	{
 		if(instance_exists(follow.id))
 		{
-			other.x = lerp(other.x,follow.id.x,follow.speed);
-			other.y = lerp(other.y,follow.id.y,follow.speed);
+			camera_man.x = lerp(other.x,follow.id.x,follow.speed);
+			camera_man.y = lerp(other.y,follow.id.y,follow.speed);
 		}
 	},
+	focus_on_point : function()
+	{
+		camera_man.x = global.camera.focus_point.x;
+		camera_man.y = global.camera.focus_point.y;
+	}
 	#endregion
-} state.run = state.following; //sets default state
+} state.run = state.focus_on_point; //sets default state
 
 #region CAMERA EFFECTS
 //camera shake
