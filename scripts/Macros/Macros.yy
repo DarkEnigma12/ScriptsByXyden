@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "Macros",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Pragma",
-    "path": "folders/Pragma.yy",
+  "$GMScript":"",
+  "%Name":"Macros",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Macros",
+  "parent":{
+    "name":"Pragma",
+    "path":"folders/Pragma.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

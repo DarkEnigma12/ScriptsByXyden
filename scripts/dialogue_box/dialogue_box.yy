@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "dialogue_box",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Scripts",
-    "path": "folders/ENGINES/UT DIALOGUE ENGINE/Scripts.yy",
+  "$GMScript":"",
+  "%Name":"dialogue_box",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"dialogue_box",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/ENGINES/UT DIALOGUE ENGINE/Scripts.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "color_scripts",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Scripts",
-    "path": "folders/ENGINES/UT DIALOGUE ENGINE/Scripts.yy",
+  "$GMScript":"",
+  "%Name":"color_scripts",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"color_scripts",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/ENGINES/UT DIALOGUE ENGINE/Scripts.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
