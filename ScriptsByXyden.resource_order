@@ -39,7 +39,7 @@
     {"name":"Dialogue_Enum","order":1,"path":"scripts/Dialogue_Enum/Dialogue_Enum.yy",},
     {"name":"font_and_string_measure","order":1,"path":"scripts/font_and_string_measure/font_and_string_measure.yy",},
     {"name":"gui_placement","order":6,"path":"scripts/gui_placement/gui_placement.yy",},
-    {"name":"instance_scale","order":7,"path":"scripts/instance_scale/instance_scale.yy",},
+    {"name":"instance_scripts","order":7,"path":"scripts/instance_scripts/instance_scripts.yy",},
     {"name":"math_scripts","order":8,"path":"scripts/math_scripts/math_scripts.yy",},
     {"name":"pixel_clean_up","order":3,"path":"scripts/pixel_clean_up/pixel_clean_up.yy",},
     {"name":"Pragma","order":1,"path":"scripts/Pragma/Pragma.yy",},

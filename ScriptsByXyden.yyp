@@ -93,7 +93,7 @@
     {"id":{"name":"Facial_Expressions_Enum","path":"scripts/Facial_Expressions_Enum/Facial_Expressions_Enum.yy",},},
     {"id":{"name":"font_and_string_measure","path":"scripts/font_and_string_measure/font_and_string_measure.yy",},},
     {"id":{"name":"gui_placement","path":"scripts/gui_placement/gui_placement.yy",},},
-    {"id":{"name":"instance_scale","path":"scripts/instance_scale/instance_scale.yy",},},
+    {"id":{"name":"instance_scripts","path":"scripts/instance_scripts/instance_scripts.yy",},},
     {"id":{"name":"Macros","path":"scripts/Macros/Macros.yy",},},
     {"id":{"name":"math_scripts","path":"scripts/math_scripts/math_scripts.yy",},},
     {"id":{"name":"music_scripts","path":"scripts/music_scripts/music_scripts.yy",},},

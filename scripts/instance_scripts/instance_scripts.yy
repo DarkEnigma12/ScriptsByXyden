@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"instance_scale",
+  "%Name":"instance_scripts",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"instance_scale",
+  "name":"instance_scripts",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",
