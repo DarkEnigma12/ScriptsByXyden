@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"Dialogue_Enum",
+  "%Name":"cheat_code_scripts",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Dialogue_Enum",
+  "name":"cheat_code_scripts",
   "parent":{
-    "name":"Enums",
-    "path":"folders/ENGINES/UT DIALOGUE ENGINE/Enums.yy",
+    "name":"Debugging System",
+    "path":"folders/Debugging System.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

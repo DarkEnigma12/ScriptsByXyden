@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"text_effects_parser",
   "isCompatibility":false,
   "isDnD":false,

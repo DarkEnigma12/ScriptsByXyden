@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"binary_math_scripts",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"camera_effects",
   "isCompatibility":false,
   "isDnD":false,

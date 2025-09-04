@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"Facial_Expressions_Enum",
   "isCompatibility":false,
   "isDnD":false,

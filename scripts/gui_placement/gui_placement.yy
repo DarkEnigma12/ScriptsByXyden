@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"gui_placement",
   "isCompatibility":false,
   "isDnD":false,

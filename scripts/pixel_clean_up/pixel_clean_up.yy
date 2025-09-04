@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"pixel_clean_up",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,13 +1,13 @@
 /// @description Set Up
-
+/*
 //Color Macros Used
 #macro C_ROYALBLUE			#4169E1
 #macro C_ERROR_RED			#EE4B2B
 #macro C_COOLYELLOW			#FFE338
-
+*/
 //origin of command window
-#macro CMD_X	10
-#macro CMD_Y	10
+//#macro CMD_X	10
+//#macro CMD_Y	10
 
 //state machine
 debug_stm =
